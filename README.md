@@ -1,2 +1,2 @@
 # swimming-manager
-Personal swimming manager application
+Personal swimming manager telegram bot.
