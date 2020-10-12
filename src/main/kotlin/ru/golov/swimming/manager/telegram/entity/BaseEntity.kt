@@ -25,6 +25,11 @@ abstract class BaseEntity<T> {
         return this.id != null && this.id == other.id;
     }
 
+    /**
+     * Hibernate requires the constant hashcode.
+     *
+     * @see <a href="https://docs.jboss.org/hibernate/orm/5.1/userguide/html_single/chapters/domain/entity.html">Hibernate documentation</a>
+     */
     override fun hashCode() = 25
 
     override fun toString(): String {
