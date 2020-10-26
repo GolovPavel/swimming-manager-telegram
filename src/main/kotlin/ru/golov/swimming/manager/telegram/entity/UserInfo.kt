@@ -12,5 +12,5 @@ class UserInfo(
         val telegramId: Long,
 
         @Column(name = "is_notification_active")
-        val isNotificationActive: Boolean
+        val isNotificationActive: Boolean = true
 ) : BaseEntity<Long>()

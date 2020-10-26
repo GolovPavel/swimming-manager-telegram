@@ -16,14 +16,14 @@ import javax.persistence.Table
 class TrainingProperties(
 
         @ManyToOne
-        @JoinColumn(name = "user_id")
+        @JoinColumn(name = "user_info_id")
         val targetUser: UserInfo,
 
         @Column(name = "training_distance", nullable = false)
         val trainingDistance: Int,
 
+        @Enumerated
         @Column(name = "training_difficulty", nullable = false)
-        @Enumerated(EnumType.STRING)
         val trainingDifficulty: TrainingDifficulty,
 
         @Enumerated(EnumType.STRING)

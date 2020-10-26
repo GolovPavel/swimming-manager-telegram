@@ -1,2 +1,10 @@
 telegram:
   access-key: access-key
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: true
