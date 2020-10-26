@@ -1,13 +1,14 @@
 package ru.golov.swimming.manager.telegram.entity
 
 import org.springframework.data.util.ProxyUtils
+import java.io.Serializable
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.MappedSuperclass
 
 @MappedSuperclass
-abstract class BaseEntity<T> {
+abstract class BaseEntity<T : Serializable> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
