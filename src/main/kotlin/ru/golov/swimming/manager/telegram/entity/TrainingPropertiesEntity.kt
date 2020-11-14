@@ -13,11 +13,11 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "training_properties")
-class TrainingProperties(
+class TrainingPropertiesEntity(
 
         @ManyToOne
         @JoinColumn(name = "user_info_id")
-        val targetUser: UserInfo,
+        val targetUser: UserInfoEntity,
 
         @Column(name = "training_distance", nullable = false)
         val trainingDistance: Int,
@@ -29,9 +29,9 @@ class TrainingProperties(
         @Enumerated(EnumType.STRING)
         @Column(name = "day_of_the_week")
         @ElementCollection(targetClass = DayOfWeek::class)
-        @CollectionTable(name = "user_training_days", joinColumns = [JoinColumn(name = "user_info_id")])
+        @CollectionTable(name = "user_training_days", joinColumns = [JoinColumn(name = "training_properties_id")])
         val trainingDays: List<DayOfWeek> = mutableListOf(),
 
-        @Column(name = "is_active", nullable = false)
-        val isActive: Boolean = true
+        @Column(name = "active", nullable = false)
+        var active: Boolean = true
 ) : BaseEntity<Long>()

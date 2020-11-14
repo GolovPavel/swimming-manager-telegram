@@ -6,11 +6,11 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "user_info")
-class UserInfo(
+class UserInfoEntity(
 
         @Column(name = "telegram_id", unique = true)
         val telegramId: Long,
 
         @Column(name = "is_notification_active")
-        val isNotificationActive: Boolean = true
+        var isNotificationActive: Boolean = false
 ) : BaseEntity<Long>()

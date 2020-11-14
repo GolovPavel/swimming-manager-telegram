@@ -1,17 +1,10 @@
 package ru.golov.swimming.manager.telegram.service
 
-import org.springframework.stereotype.Service
-import ru.golov.swimming.manager.telegram.entity.UserInfo
-import ru.golov.swimming.manager.telegram.repository.UserInfoRepository
+import ru.golov.swimming.manager.telegram.entity.UserInfoEntity
 
-@Service
-class UserInfoService(val userInfoRepository: UserInfoRepository) {
+interface UserInfoService {
 
-    fun saveUserInfo(userInfo: UserInfo): UserInfo {
-        return userInfoRepository.save(userInfo)
-    }
+    fun getOrCreateUserInfoByTelegramId(telegramId: Long): UserInfoEntity
 
-    fun getUserInfoByTelegramId(telegramId: Long) {
-        return userInfoRepository.findByTelegramId(telegramId)
-    }
+    fun changeUserNotificationFlag(userInfoEntity: UserInfoEntity, isNotificationActive: Boolean)
 }

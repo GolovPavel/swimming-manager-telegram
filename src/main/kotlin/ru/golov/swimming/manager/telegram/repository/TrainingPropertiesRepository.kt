@@ -1,11 +1,10 @@
 package ru.golov.swimming.manager.telegram.repository
 
-import org.springframework.data.jpa.repository.JpaRepository
-import ru.golov.swimming.manager.telegram.entity.TrainingProperties
-import ru.golov.swimming.manager.telegram.entity.UserInfo
-import java.util.Optional
+import org.springframework.data.repository.CrudRepository
+import ru.golov.swimming.manager.telegram.entity.TrainingPropertiesEntity
+import ru.golov.swimming.manager.telegram.entity.UserInfoEntity
 
-interface TrainingPropertiesRepository : JpaRepository<TrainingProperties, Long> {
+interface TrainingPropertiesRepository : CrudRepository<TrainingPropertiesEntity, Long> {
 
-    fun findByTargetUser(targetUser: UserInfo): Optional<TrainingProperties>
+    fun findByTargetUserAndActiveTrue(targetUser: UserInfoEntity): Iterable<TrainingPropertiesEntity>
 }

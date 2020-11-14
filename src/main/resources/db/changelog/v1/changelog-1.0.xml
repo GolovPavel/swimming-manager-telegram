@@ -8,7 +8,7 @@
     <changeSet author="GolovPavel" id="changelog-1.0">
 
         <createTable tableName="user_info">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="telegram_id" type="bigint">
@@ -20,7 +20,7 @@
         </createTable>
 
         <createTable tableName="training_properties">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="user_info_id" type="bigint">
@@ -32,14 +32,14 @@
             <column name="training_difficulty" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="is_active" type="boolean">
+            <column name="active" type="boolean">
                 <constraints nullable="false"/>
             </column>
         </createTable>
 
         <createTable tableName="user_training_days">
-            <column name="user_info_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_training_days_user_info" references="user_info(id)"/>
+            <column name="training_properties_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_training_days_training_properties" references="training_properties(id)"/>
             </column>
             <column name="day_of_the_week" type="varchar">
                 <constraints nullable="false"/>
