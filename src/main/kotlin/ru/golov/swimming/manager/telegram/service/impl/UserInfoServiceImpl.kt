@@ -8,8 +8,8 @@ import ru.golov.swimming.manager.telegram.service.UserInfoService
 @Service
 class UserInfoServiceImpl(val userInfoRepository: UserInfoRepository) : UserInfoService {
 
-    override fun getOrCreateUserInfoByTelegramId(telegramId: Long): UserInfoEntity {
-        return userInfoRepository.findByTelegramId(telegramId) ?: createUserByTelegramId(telegramId)
+    override fun getOrCreateUserInfoByTelegramId(userTelegramId: Long): UserInfoEntity {
+        return userInfoRepository.findByTelegramId(userTelegramId) ?: createUserByTelegramId(userTelegramId)
     }
 
     override fun changeUserNotificationFlag(userInfoEntity: UserInfoEntity, isNotificationActive: Boolean) {

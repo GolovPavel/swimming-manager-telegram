@@ -9,9 +9,12 @@ import ru.golov.swimming.manager.telegram.service.TrainingProgramService
 import java.lang.NumberFormatException
 import java.time.DayOfWeek
 
+val distanceParam = "distance"
+val trainingDifficultyParam = "trainingDifficulty"
+val daysOfTheWeekParam = "daysOfWeek"
 
 handler("/newTrainingProgram") {
-    step<Int>("distance") {
+    step<Int>(distanceParam) {
         question {
             MarkdownMessage("What distance in meters do you usually swim in training?")
         }
@@ -25,7 +28,7 @@ handler("/newTrainingProgram") {
         }
     }
 
-    step<TrainingDifficulty>("trainingDifficulty") {
+    step<TrainingDifficulty>(trainingDifficultyParam) {
         question {
             MarkdownMessage("What is your training difficulty?", "Low", "Medium", "Hard")
         }
@@ -40,7 +43,7 @@ handler("/newTrainingProgram") {
         }
     }
 
-    step<List<DayOfWeek>>("daysOfWeek") {
+    step<List<DayOfWeek>>(daysOfTheWeekParam) {
         question {
             MarkdownMessage("What days of the week do you plan to train?")
         }
@@ -62,9 +65,9 @@ handler("/newTrainingProgram") {
     }
 
     process { stats, answers ->
-        val trainingDistance = answers["distance"] as Int
-        val trainingDifficulty = answers["trainingDifficulty"] as TrainingDifficulty
-        val trainingDays = answers["daysOfWeek"] as List<DayOfWeek>
+        val trainingDistance = answers[distanceParam] as Int
+        val trainingDifficulty = answers[trainingDifficultyParam] as TrainingDifficulty
+        val trainingDays = answers[daysOfTheWeekParam] as List<DayOfWeek>
 
         val trainingProperties = TrainingProperties(
                 trainingDistance,
